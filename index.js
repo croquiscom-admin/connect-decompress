@@ -49,7 +49,7 @@ module.exports = function decompressFactory(options) {
       if (err) return next(err);
 
       zlib.gunzip(buf, function (err, buf) {
-        if (err) return next(err);
+        if (err) return next(error(400, 'invalid Content-Encoding'));
         buf = buf.toString();
 
         var first = buf.trim()[0];
